@@ -1,4 +1,4 @@
-const VERSION = "0.4.0";
+const VERSION = "0.4.1";
 
 const ACTIVE_STATES = ["on", "open", "unlocked", "home", "cleaning", "playing"];
 
@@ -112,7 +112,7 @@ class HAToggleGridCard extends HTMLElement {
     const cols = Number(this._config.columns) || (tiles ? 3 : 1);
 
     this.shadowRoot.innerHTML = `<style>
-      :host{display:block;--good:var(--dashboard-success,#54d9aa);--warn:var(--dashboard-warning,#ffbd59);--danger:var(--dashboard-danger,#ff667a);--edge:var(--dashboard-border-neutral,rgba(127,145,165,.2))}
+      :host{display:block;--good:var(--dashboard-success, var(--success-color, #54d9aa));--warn:var(--dashboard-warning, var(--warning-color, #ffbd59));--danger:var(--dashboard-danger, var(--error-color, #ff667a));--edge:var(--dashboard-border-neutral, var(--divider-color, rgba(127,145,165,.2)))}
       *{box-sizing:border-box}
       ha-card{padding:16px 18px;border-radius:20px;background:var(--ha-card-background,var(--card-background-color));color:var(--primary-text-color);box-shadow:var(--ha-card-box-shadow)}
       .head{margin-bottom:6px}
