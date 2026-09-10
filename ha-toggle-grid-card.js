@@ -1,4 +1,4 @@
-const VERSION = "0.4.1";
+const VERSION = "0.5.0";
 
 const ACTIVE_STATES = ["on", "open", "unlocked", "home", "cleaning", "playing"];
 
@@ -112,7 +112,7 @@ class HAToggleGridCard extends HTMLElement {
     const cols = Number(this._config.columns) || (tiles ? 3 : 1);
 
     this.shadowRoot.innerHTML = `<style>
-      :host{display:block;--good:var(--dashboard-success, var(--success-color, #54d9aa));--warn:var(--dashboard-warning, var(--warning-color, #ffbd59));--danger:var(--dashboard-danger, var(--error-color, #ff667a));--edge:var(--dashboard-border-neutral, var(--divider-color, rgba(127,145,165,.2)))}
+      :host{display:block;--accent:var(--dashboard-accent, var(--primary-color, #62b5ff));--good:var(--dashboard-success, var(--success-color, #54d9aa));--warn:var(--dashboard-warning, var(--warning-color, #ffbd59));--danger:var(--dashboard-danger, var(--error-color, #ff667a));--edge:var(--dashboard-border-neutral, var(--divider-color, rgba(127,145,165,.2)))}
       *{box-sizing:border-box}
       ha-card{padding:16px 18px;border-radius:20px;background:var(--ha-card-background,var(--card-background-color));color:var(--primary-text-color);box-shadow:var(--ha-card-box-shadow)}
       .head{margin-bottom:6px}
@@ -133,9 +133,9 @@ class HAToggleGridCard extends HTMLElement {
       .switch i{position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;background:#fff;transition:transform .2s}
       .switch.on i{transform:translateX(13px)}
       .tiles{display:grid;grid-template-columns:repeat(${cols},1fr);gap:10px}
-      .tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px 10px;border:1px solid var(--edge);border-radius:18px;background:transparent;color:var(--primary-text-color);cursor:pointer;text-align:center;min-height:96px}
+      .tile{--tone:var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px 10px;border:1px solid color-mix(in srgb,var(--tone) 16%,var(--edge));border-left:3px solid var(--tone);border-radius:18px;background:linear-gradient(145deg,color-mix(in srgb,var(--tone) 6%,transparent),transparent 55%);box-shadow:0 4px 12px rgba(0,0,0,.08);color:var(--primary-text-color);cursor:pointer;text-align:center;min-height:96px}
       .tile:hover{border-color:var(--primary-text-color)}
-      .tile.on{border-color:color-mix(in srgb,var(--good) 55%,var(--edge));background:color-mix(in srgb,var(--good) 10%,transparent)}
+      .tile.on{--tone:var(--good);background:linear-gradient(145deg,color-mix(in srgb,var(--good) 12%,transparent),transparent 55%)}
       .tile.unavailable{opacity:.4;pointer-events:none}
       .tile-icon{--mdc-icon-size:30px;color:var(--secondary-text-color)}
       .tile.on .tile-icon{color:var(--good)}
